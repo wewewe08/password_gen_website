@@ -6,12 +6,19 @@ let passwordElement1, passwordElement2;
 window.addEventListener("DOMContentLoaded", () => {
     passwordElement1 = document.getElementById("password1")
     passwordElement2 = document.getElementById("password2")
+
+    passwordElement1.addEventListener("click", function() {
+        CopyPassword(passwordElement1);
+    });
+    passwordElement2.addEventListener("click", function() {
+        CopyPassword(passwordElement2);
+    });
 });
 
 function DisplayPasswords() {
     let passwordLength = document.getElementById("password-length")
-    if (passwordLength.value > 32) {
-        window.alert("Password length too long!");
+    if (isNaN(passwordLength.value) || passwordLength.value < 8 || passwordLength.value > 32) {
+        window.alert("Please enter a valid number from 8-32");
         return;
     }
 
@@ -25,4 +32,10 @@ function GeneratePassword(element, length){
         let randomCharIndex = Math.floor(Math.random() * characters.length);
         element.innerText += characters[randomCharIndex];
     }
+}
+
+function CopyPassword(element) {
+    let copiedPassword = element.innerText
+    navigator.clipboard.writeText(copiedPassword);
+    window.alert("Copied password!");
 }

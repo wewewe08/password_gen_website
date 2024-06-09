@@ -30,6 +30,7 @@ h1{
 }
 
 .password {
+    transition-duration: 0.4s;
     margin: 0px 10px;
     font-weight: bold;
     font-size: 1em;
@@ -39,6 +40,10 @@ h1{
     height: 50px;
     width: 50%;
     border-radius: 5px;
+}
+
+.password:hover {
+    background-color: #444c5a;
 }
 
 form {
